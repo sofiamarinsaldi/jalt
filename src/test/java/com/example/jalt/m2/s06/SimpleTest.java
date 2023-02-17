@@ -1,9 +1,9 @@
 /*
- * Introduction to Test Driven Development with Java
+ * Introduction to Java Logging and Testing
  * 
- * https://github.com/egalli64/jtdd
+ * https://github.com/egalli64/jalt
  */
-package com.example.jtdd.s06;
+package com.example.jalt.m2.s06;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.example.jtdd.s05.Simple;
+import com.example.jalt.m2.s05.Simple;
 
 /**
  * A test case with a couple of tests in it

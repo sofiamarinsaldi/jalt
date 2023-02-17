@@ -1,9 +1,9 @@
 /*
- * Introduction to Test Driven Development with Java
+ * Introduction to Java Logging and Testing
  * 
- * https://github.com/egalli64/jtdd
+ * https://github.com/egalli64/jalt
  */
-package com.example.jtdd.s04;
+package com.example.jalt.m2.s04;
 
 import static org.junit.jupiter.api.Assertions.*;
 

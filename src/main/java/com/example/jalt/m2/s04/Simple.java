@@ -1,9 +1,9 @@
 /*
- * Introduction to Test Driven Development with Java
+ * Introduction to Java Logging and Testing
  * 
- * https://github.com/egalli64/jtdd
+ * https://github.com/egalli64/jalt
  */
-package com.example.jtdd.s04;
+package com.example.jalt.m2.s04;
 
 /**
  * A stub for a class that has to be developed
@@ -15,9 +15,9 @@ public class Simple {
      * Method stub, assume we have still to think about how it should work
      * 
      * @param value the input
-     * @return currently, always zero
+     * @return currently, always throws UnsupportedOperationException
      */
     public int negate(int value) {
-        return 0;
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }
