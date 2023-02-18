@@ -6,68 +6,94 @@
 package com.example.jalt.m2.s06;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.example.jalt.m2.s05.Simple;
-
 /**
- * A test case with a couple of tests in it
- * 
- * @see Simple, the class to be tested
+ * Jupiter assertions
  */
 class SimpleTest {
-    /** Both tests in the case work on an object created in the same way, no need of duplication */
-    Simple simple = new Simple();
+    /** The instance to be tested is initialized in the same way for each test */
+    private Simple simple = new Simple();
 
-    @BeforeAll
-    static void initAll() {
-        System.out.println("Initializing for the test case");
-    }
-
-    @BeforeEach
-    void initEach() {
-        System.out.println("Initializing for a test");
-    }
-
-    @AfterEach
-    void postEach() {
-        System.out.println("Finalizing a test");
-    }
-
-    @AfterAll
-    static void postAll() {
-        System.out.println("Finalizing the test case execution");
+    /**
+     * Assert that a condition is true
+     */
+    @Test
+    void checkTrue() {
+        boolean condition = simple.isPositive(12);
+        assertTrue(condition);
     }
 
     /**
-     * Test for positive input
+     * Assert that a condition is false
+     * 
+     * Use assertTrue() negating the condition
      */
     @Test
-    public void negatePositive() {
+    void checkFalse() {
+        boolean condition = simple.isPositive(-42);
+        assertTrue(!condition);
+    }
+
+    /**
+     * Assert that a reference is null
+     */
+    @Test
+    void checkNull() {
+        String reference = simple.nullIfPositive(42);
+        assertNull(reference);
+    }
+
+    /**
+     * Assert that a reference is not null
+     * 
+     * Use assertTrue() on the reference comparison against null
+     */
+    @Test
+    void checkNotNull() {
+        String reference = simple.nullIfPositive(-22);
+        assertTrue(reference != null);
+    }
+
+    /**
+     * Assert that two primitive values (integers) are equal
+     */
+    @Test
+    void checkEqual() {
         int input = 42;
-
-        int expected = -42;
         int actual = simple.negate(input);
+        int expected = -42;
 
         assertEquals(expected, actual);
     }
 
     /**
-     * Test for negative input
+     * Assert that two primitive values (integers) are different
+     * 
+     * Use assertTrue() on the comparison between the two values
      */
     @Test
-    public void negateNegative() {
-        int input = -42;
-
-        int expected = 42;
+    void checkDifferent() {
+        int input = 42;
         int actual = simple.negate(input);
 
-        assertEquals(expected, actual);
+        assertTrue(actual != input);
     }
 
+    /**
+     * Assert that two floating point primitive values (doubles) are close enough to be considered equal
+     * <p>
+     * With a lower delta the assertion should fail
+     */
+    @Test
+    void checkEqualDouble() {
+        double first = .29;
+        double second = 3.0;
+        double actual = simple.multiply(first, second);
+        double expected = .87;
+        assertEquals(expected, actual, .000_000_000_000_000_2);
+    }
 }
