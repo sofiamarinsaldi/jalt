@@ -1,12 +1,33 @@
+/*
+ * Introduction to Java Logging and Testing
+ * 
+ * https://github.com/egalli64/jalt
+ */
 package com.example.jalt.m3.s02;
 
+/**
+ * A class that has a dependency, the Operator.
+ * 
+ * It is _not_ responsibility of this class ensuring that Operator works correctly
+ */
 public class Worker {
-    private Operator operator;
+    /** The operator used by this worker */
+    private final Operator operator;
 
+    /**
+     * No-arg constructor
+     * 
+     * By default, a worker uses Adder as Operator
+     */
     public Worker() {
         this(new Adder());
     }
 
+    /**
+     * Constructor for Dependency Injection
+     * 
+     * @param operator the Operator to be used
+     */
     public Worker(Operator operator) {
         this.operator = operator;
     }
@@ -17,7 +38,7 @@ public class Worker {
      * @param left  the first operand
      * @param right the second operand
      * @return two times left operator right
-     * @throws ArithmeticException if the result overflows an int
+     * @throws ArithmeticException if the result overflows
      */
     public int generate(int left, int right) {
         return Math.multiplyExact(2, operator.operation(left, right));
