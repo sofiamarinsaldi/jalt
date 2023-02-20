@@ -8,7 +8,7 @@ package com.example.jalt.m3.s02;
 /**
  * An operation that returns the sum of the operands.
  * 
- * Notice that this is a weak implementation, overflow is not checked
+ * This class was designed to work on small values, overflow is not checked
  */
 public class Adder implements Operator {
     @Override
