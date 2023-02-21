@@ -5,9 +5,7 @@
  */
 package com.example.jalt.m2.s06;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,13 +27,11 @@ class SimpleTest {
 
     /**
      * Assert that a condition is false
-     * 
-     * Use assertTrue() negating the condition
      */
     @Test
     void checkFalse() {
         boolean condition = simple.isPositive(-42);
-        assertTrue(!condition);
+        assertFalse(condition);
     }
 
     /**
@@ -49,13 +45,11 @@ class SimpleTest {
 
     /**
      * Assert that a reference is not null
-     * 
-     * Use assertTrue() on the reference comparison against null
      */
     @Test
     void checkNotNull() {
         String reference = simple.nullIfPositive(-22);
-        assertTrue(reference != null);
+        assertNotNull(reference);
     }
 
     /**
@@ -72,19 +66,17 @@ class SimpleTest {
 
     /**
      * Assert that two primitive values (integers) are different
-     * 
-     * Use assertTrue() on the comparison between the two values
      */
     @Test
     void checkDifferent() {
         int input = 42;
         int actual = simple.negate(input);
 
-        assertTrue(actual != input);
+        assertNotEquals(input, actual);
     }
 
     /**
-     * Assert that two floating point primitive values (doubles) are close enough to be considered equal
+     * Assert that two doubles are close enough to be considered equal
      * <p>
      * With a lower delta the assertion should fail
      */
@@ -96,4 +88,19 @@ class SimpleTest {
         double expected = .87;
         assertEquals(expected, actual, .000_000_000_000_000_2);
     }
+
+    /**
+     * Assert that two doubles are distant enough to be considered different
+     * <p>
+     * With a higher delta the assertion should fail
+     */
+    @Test
+    void checkDifferentDouble() {
+        double first = .29;
+        double second = 3.0;
+        double actual = simple.multiply(first, second);
+        double expected = .87;
+        assertNotEquals(expected, actual, .000_000_000_000_000_1);
+    }
+
 }
