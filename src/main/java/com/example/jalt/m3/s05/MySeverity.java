@@ -1,0 +1,14 @@
+/*
+ * Introduction to Java Logging and Testing
+ * 
+ * https://github.com/egalli64/jalt
+ */
+package com.example.jalt.m3.s05;
+
+/**
+ * Currently waiting for its design to be finalized
+ * 
+ * @see MyLogger
+ */
+public interface MySeverity {
+}
