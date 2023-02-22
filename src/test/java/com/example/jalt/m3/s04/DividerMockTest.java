@@ -37,6 +37,7 @@ class DividerMockTest {
 
         // verify the mock has been used in the expected way
         verify(mockDiv).operation(mockLeft, mockRight);
+        // never() is a synonym for times(0)
         verify(mockDiv, times(0)).operation(0, 0);
     }
 
