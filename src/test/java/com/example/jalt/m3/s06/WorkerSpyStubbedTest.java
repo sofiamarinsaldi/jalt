@@ -52,10 +52,6 @@ class WorkerSpyStubbedTest {
         int right = 2_000_000_000;
 
         // uncomment the following statement to show the expected behavior
-//        doThrow(new ArithmeticException("integer overflow")) //
-//                .when(spyAdd).operation(left, right);
-
-        // alternative approach, here they both work fine
 //        when(spyAdd.operation(left, right)) //
 //                .thenThrow(new ArithmeticException("integer overflow"));
 
