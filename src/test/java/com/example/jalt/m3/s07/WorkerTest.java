@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m3.s06;
+package com.example.jalt.m3.s07;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

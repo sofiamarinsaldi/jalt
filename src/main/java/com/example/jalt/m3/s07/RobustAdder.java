@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m3.s06;
+package com.example.jalt.m3.s07;
 
 import com.example.jalt.m3.s02.Operator;
 
