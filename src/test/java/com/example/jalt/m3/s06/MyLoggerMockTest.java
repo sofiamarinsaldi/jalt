@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m3.s05;
+package com.example.jalt.m3.s06;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -11,6 +11,9 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Differences among mock, stub and dummy
+ */
 class MyLoggerMockTest {
     /** mock - it has a stubbed method */
     private MyFormatter mockFormatter = mock();

@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m3.s05;
+package com.example.jalt.m3.s06;
 
 /**
  * A class that is going to be mock tested with dummy, stub, and mock

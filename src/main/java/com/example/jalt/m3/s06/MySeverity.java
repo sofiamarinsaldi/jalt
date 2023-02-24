@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m3.s05;
+package com.example.jalt.m3.s06;
 
 /**
  * Currently waiting for its design to be finalized
