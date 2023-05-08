@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * <li>JUL with default settings to generate logging
  */
 public class Hello {
-    /** A JUL logger */
+    /** A JUL logger - same setting for all Java programs on current JVM! */
     private static final Logger log = Logger.getLogger(Hello.class.getName());
 
     public static void main(String[] args) {
