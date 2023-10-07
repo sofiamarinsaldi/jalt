@@ -49,7 +49,7 @@ class SimpleTest {
      * Assert that a reference is not null
      */
     @Test
-    void checkNotNull() {
+    void nullIfPositiveNotNull() {
         String reference = simple.nullIfPositive(-22);
         assertNotNull(reference);
     }
@@ -58,7 +58,7 @@ class SimpleTest {
      * Assert that two primitive values (integers) are equal
      */
     @Test
-    void checkEqual() {
+    void negateEquals() {
         int input = 42;
         int actual = simple.negate(input);
         int expected = -42;
@@ -70,7 +70,7 @@ class SimpleTest {
      * Assert that two primitive values (integers) are different
      */
     @Test
-    void checkDifferent() {
+    void negateNotEquals() {
         int input = 42;
         int actual = simple.negate(input);
 
@@ -83,7 +83,7 @@ class SimpleTest {
      * With a lower delta the assertion should fail
      */
     @Test
-    void checkEqualDouble() {
+    void multiplyEqualsForFloatingPoints() {
         double first = .29;
         double second = 3.0;
         double actual = simple.multiply(first, second);
@@ -97,7 +97,7 @@ class SimpleTest {
      * With a higher delta the assertion should fail
      */
     @Test
-    void checkDifferentDouble() {
+    void multiplyNotEqualsForFloatingPoints() {
         double first = .29;
         double second = 3.0;
         double actual = simple.multiply(first, second);
