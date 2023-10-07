@@ -21,8 +21,11 @@ import com.example.jalt.m2.s05.Simple;
  * @see Simple, the class to be tested
  */
 class SimpleTest {
-    /** Both tests in the case work on an object created in the same way, no need of duplication */
-    Simple simple = new Simple();
+    /**
+     * Each test in this case work on an object created in the same way. There is no
+     * need of a specific definition for each one, just put it at class level.
+     */
+    private Simple simple = new Simple();
 
     @BeforeAll
     static void initAll() {

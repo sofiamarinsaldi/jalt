@@ -16,7 +16,10 @@ import com.example.jalt.m2.s06.Simple;
  * Jupiter parameterized tests
  */
 class SimpleTest {
-    /** The instance to be tested is initialized in the same way for each test */
+    /**
+     * Each test in this case work on an object created in the same way. There is no
+     * need of a specific definition for each one, just put it at class level.
+     */
     private Simple simple = new Simple();
 
     /**

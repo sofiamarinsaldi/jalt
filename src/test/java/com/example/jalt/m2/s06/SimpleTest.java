@@ -13,23 +13,25 @@ import org.junit.jupiter.api.Test;
  * Jupiter assertions
  */
 class SimpleTest {
-    /** The instance to be tested is initialized in the same way for each test */
+    /**
+     * Each test in this case work on an object created in the same way. There is no
+     * need of a specific definition for each one, just put it at class level.
+     */
     private Simple simple = new Simple();
 
     /**
-     * Assert that a condition is true
+     * Assert that a condition is true (in a very compact way)
      */
     @Test
-    void checkTrue() {
-        boolean condition = simple.isPositive(12);
-        assertTrue(condition);
+    void isPositiveTrue() {
+        assertTrue(simple.isPositive(12));
     }
 
     /**
      * Assert that a condition is false
      */
     @Test
-    void checkFalse() {
+    void isPositiveFalse() {
         boolean condition = simple.isPositive(-42);
         assertFalse(condition);
     }
@@ -38,7 +40,7 @@ class SimpleTest {
      * Assert that a reference is null
      */
     @Test
-    void checkNull() {
+    void nullIfPositiveNull() {
         String reference = simple.nullIfPositive(42);
         assertNull(reference);
     }
@@ -102,5 +104,4 @@ class SimpleTest {
         double expected = .87;
         assertNotEquals(expected, actual, .000_000_000_000_000_1);
     }
-
 }

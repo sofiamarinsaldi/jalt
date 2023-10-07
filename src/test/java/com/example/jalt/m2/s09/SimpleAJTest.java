@@ -16,7 +16,10 @@ import com.example.jalt.m2.s06.Simple;
  * AssertJ assertions
  */
 class SimpleAJTest {
-    /** The instance to be tested is initialized in the same way for each test */
+    /**
+     * Each test in this case work on an object created in the same way. There is no
+     * need of a specific definition for each one, just put it at class level.
+     */
     private Simple simple = new Simple();
 
     /**
@@ -84,8 +87,8 @@ class SimpleAJTest {
     }
 
     /**
-     * Assert that the actual double value is close to the expected double value with a stated
-     * precision.
+     * Assert that the actual double value is close to the expected double value
+     * with a stated precision.
      * <p>
      * With a lower precision the assertion should fail
      */
