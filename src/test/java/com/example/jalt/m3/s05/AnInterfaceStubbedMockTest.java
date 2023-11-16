@@ -11,7 +11,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.mockito.Mockito;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +19,10 @@ import com.example.jalt.m3.s03.AnInterface;
 
 /**
  * Using Mockito matchers
+ * 
+ * @apiNote Static import of Mockito.when won't compile in Eclipse 2023-09 with
+ *          patch for Java 21 - workaround waiting for 2023-12 is _not_ using
+ *          static import for this method
  */
 class AnInterfaceStubbedMockTest {
     private static final int GOOD_INT = 12;
@@ -32,16 +36,17 @@ class AnInterfaceStubbedMockTest {
     private AnInterface mockOp = mock();
 
     /**
-     * Any "good" int - Mockito::anyInt() - passed to calculate() should return a "good" value
+     * Any "good" int - Mockito::anyInt() - passed to calculate() should return a
+     * "good" value
      * 
      * It is not on the mock deciding which value is good
      * 
-     * Stubbing by when .. thenReturn 
+     * Stubbing by when .. thenReturn
      */
     @Test
     void calculateWhenThenReturn() {
         // stubbing
-        when(mockOp.calculate(anyInt())).thenReturn(MOCK_INT_RESULT);
+        Mockito.when(mockOp.calculate(anyInt())).thenReturn(MOCK_INT_RESULT);
 
         // usual testing, expecting GOOD_INT being an acceptable value
         int input = GOOD_INT;
@@ -52,7 +57,8 @@ class AnInterfaceStubbedMockTest {
     }
 
     /**
-     * Any "good" int - Mockito::anyInt() - passed to calculate() should return a "good" value
+     * Any "good" int - Mockito::anyInt() - passed to calculate() should return a
+     * "good" value
      * 
      * Stubbing by doReturn ... when
      */
@@ -70,25 +76,27 @@ class AnInterfaceStubbedMockTest {
      */
     @Test
     void calculateExceptional() {
-        when(mockOp.calculate(anyInt())).thenThrow(MOCK_EXCEPTION);
+        Mockito.when(mockOp.calculate(anyInt())).thenThrow(MOCK_EXCEPTION);
         assertThatIllegalArgumentException().isThrownBy(() -> mockOp.calculate(BAD_INT));
     }
 
     /**
-     * Any "good" reference - Mockito::any() - passed to getMessage() should return a "good" value
+     * Any "good" reference - Mockito::any() - passed to getMessage() should return
+     * a "good" value
      */
     @Test
     void getMessage() {
-        when(mockOp.getMessage(any())).thenReturn(MOCK_STRING_RESULT);
+        Mockito.when(mockOp.getMessage(any())).thenReturn(MOCK_STRING_RESULT);
         assertThat(mockOp.getMessage(GOOD_STRING)).isEqualTo(MOCK_STRING_RESULT);
     }
 
     /**
-     * Any "bad" reference passed to getMessage() should cause an IllegalArgumentException
+     * Any "bad" reference passed to getMessage() should cause an
+     * IllegalArgumentException
      */
     @Test
     void getMessageExceptional() {
-        when(mockOp.getMessage(any())).thenThrow(MOCK_EXCEPTION);
+        Mockito.when(mockOp.getMessage(any())).thenThrow(MOCK_EXCEPTION);
         assertThatIllegalArgumentException().isThrownBy(() -> mockOp.getMessage(BAD_STRING));
     }
 }

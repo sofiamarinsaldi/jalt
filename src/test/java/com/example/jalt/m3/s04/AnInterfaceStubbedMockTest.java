@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.mockito.Mockito;
 
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +22,10 @@ import com.example.jalt.m3.s03.AnInterface;
  * <li>doReturn(x).when(o).f()
  * <li>when(o.f()).thenThrow(exception)
  * <li>doThrow(exception).when(o).f()
+ * 
+ * @apiNote Static import of Mockito.when won't compile in Eclipse 2023-09 with
+ *          patch for Java 21 - workaround waiting for 2023-12 is _not_ using
+ *          static import for this method
  */
 class AnInterfaceStubbedMockTest {
     private AnInterface mockOp = mock();
@@ -31,10 +35,10 @@ class AnInterfaceStubbedMockTest {
      */
     @Test
     void calculate() {
-        when(mockOp.calculate(1)).thenReturn(10);
+        Mockito.when(mockOp.calculate(1)).thenReturn(10);
         doReturn(20).when(mockOp).calculate(2);
 
-        when(mockOp.calculate(3)).thenThrow(new IllegalArgumentException("Bad value: 3"));
+        Mockito.when(mockOp.calculate(3)).thenThrow(new IllegalArgumentException("Bad value: 3"));
         doThrow(new IllegalArgumentException("Bad value: 4")).when(mockOp).calculate(4);
 
         assertThat(mockOp.calculate(1)).isEqualTo(10);
@@ -48,10 +52,10 @@ class AnInterfaceStubbedMockTest {
      */
     @Test
     void getMessage() {
-        when(mockOp.getMessage("Bob")).thenReturn("Hello");
+        Mockito.when(mockOp.getMessage("Bob")).thenReturn("Hello");
         doReturn("Ciao").when(mockOp).getMessage("Tom");
 
-        when(mockOp.getMessage("Kim")).thenThrow(new IllegalArgumentException("KO 1"));
+        Mockito.when(mockOp.getMessage("Kim")).thenThrow(new IllegalArgumentException("KO 1"));
         doThrow(new IllegalArgumentException("KO 2")).when(mockOp).getMessage("Jim");
 
         assertThat(mockOp.getMessage("Bob")).isEqualTo("Hello");
@@ -66,7 +70,7 @@ class AnInterfaceStubbedMockTest {
     @Test
     void operateExceptional() {
         // won't compile
-//        when(mockOp.operate()).thenThrow(new IllegalArgumentException("KO"));
+        // Mockito.when(mockOp.operate()).thenThrow(new IllegalArgumentException("KO"));
         doThrow(new IllegalArgumentException("KO")).when(mockOp).operate();
 
         assertThatIllegalArgumentException().isThrownBy(() -> mockOp.operate()).withMessage("KO");

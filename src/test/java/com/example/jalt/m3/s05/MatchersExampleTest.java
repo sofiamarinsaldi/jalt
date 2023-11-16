@@ -9,12 +9,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.mockito.Mockito;
 
 import org.junit.jupiter.api.Test;
 
 /**
  * Usage of Mockito ArgumentMatchers
+ * 
+ * @apiNote Static import of Mockito.when won't compile in Eclipse 2023-09 with
+ *          patch for Java 21 - workaround waiting for 2023-12 is _not_ using
+ *          static import for this method
  */
 class MatchersExampleTest {
     private static final int GOOD_INT = 12;
@@ -33,7 +37,7 @@ class MatchersExampleTest {
     @Test
     void methodAAnyIntGood() {
         // stubbing for any (good) argument
-        when(me.methodA(anyInt())).thenReturn(MOCK_RESULT);
+        Mockito.when(me.methodA(anyInt())).thenReturn(MOCK_RESULT);
 
         // testing for a good argument
         assertThat(me.methodA(GOOD_INT)).isEqualTo(MOCK_RESULT);
@@ -45,7 +49,7 @@ class MatchersExampleTest {
     @Test
     void methodAAnyIntBad() {
         // stubbing for any (bad) argument
-        when(me.methodA(anyInt())).thenThrow(MOCK_EXCEPTION);
+        Mockito.when(me.methodA(anyInt())).thenThrow(MOCK_EXCEPTION);
 
         // testing for a bad argument
         assertThatIllegalArgumentException().isThrownBy(() -> me.methodA(BAD_INT));
@@ -57,7 +61,7 @@ class MatchersExampleTest {
     @Test
     void methodBAnyGood() {
         // stubbing for any (good) argument
-        when(me.methodB(any())).thenReturn(MOCK_RESULT);
+        Mockito.when(me.methodB(any())).thenReturn(MOCK_RESULT);
 
         // testing for a good argument
         assertThat(me.methodB(GOOD_STRING)).isEqualTo(MOCK_RESULT);
@@ -69,7 +73,7 @@ class MatchersExampleTest {
     @Test
     void methodBAnyBad() {
         // stubbing for any (bad) argument
-        when(me.methodB(any())).thenThrow(MOCK_EXCEPTION);
+        Mockito.when(me.methodB(any())).thenThrow(MOCK_EXCEPTION);
 
         // testing for a bad argument
         assertThatIllegalArgumentException().isThrownBy(() -> me.methodB(BAD_STRING));
@@ -81,7 +85,7 @@ class MatchersExampleTest {
     @Test
     void methodBNullBad() {
         // stubbing for null as bad argument
-        when(me.methodB(isNull())).thenThrow(MOCK_EXCEPTION);
+        Mockito.when(me.methodB(isNull())).thenThrow(MOCK_EXCEPTION);
 
         // testing
         assertThatIllegalArgumentException().isThrownBy(() -> me.methodB(null));
@@ -93,7 +97,7 @@ class MatchersExampleTest {
     @Test
     void methodBNonNullGood() {
         // stubbing for generic non-null reference as good argument
-        when(me.methodB(notNull())).thenReturn(MOCK_RESULT);
+        Mockito.when(me.methodB(notNull())).thenReturn(MOCK_RESULT);
 
         // testing
         assertThat(me.methodB(GOOD_STRING)).isEqualTo(MOCK_RESULT);
@@ -101,14 +105,15 @@ class MatchersExampleTest {
     }
 
     /**
-     * Only if "Bob" is contained in the argument methodB() should return a good result
+     * Only if "Bob" is contained in the argument methodB() should return a good
+     * result
      */
     @Test
     void methodBBobGood() {
         String contained = "Bob";
 
         // stubbing for string containing Bob as good argument
-        when(me.methodB(contains(contained))).thenReturn(MOCK_RESULT);
+        Mockito.when(me.methodB(contains(contained))).thenReturn(MOCK_RESULT);
 
         // testing
         assertThat(me.methodB(contained)).isEqualTo(MOCK_RESULT);
@@ -125,7 +130,7 @@ class MatchersExampleTest {
         String start = "Bob";
 
         // stubbing for string starting with Bob as good argument
-        when(me.methodB(startsWith(start))).thenReturn(MOCK_RESULT);
+        Mockito.when(me.methodB(startsWith(start))).thenReturn(MOCK_RESULT);
 
         // testing
         assertThat(me.methodB(start)).isEqualTo(MOCK_RESULT);
