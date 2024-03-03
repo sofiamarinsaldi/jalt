@@ -12,9 +12,15 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Create a Mockito mock from an interface and check how it is done
+ * 
+ * Since Java 21 the current Mockito approach leads to a warning:
+ * 
+ * <pre>
+ * A Java agent has been loaded dynamically
+ * </pre>
  */
 class AnInterfaceMockTest {
-    private AnInterface mockOp = mock();
+    private AnInterface mock = mock();
 
     /**
      * The mock is of the "right" type
@@ -25,9 +31,9 @@ class AnInterfaceMockTest {
      */
     @Test
     void constructor() {
-        assertThat(mockOp).isInstanceOf(AnInterface.class);
-        assertThat(mockOp.calculate(42)).isZero();
-        assertThat(mockOp.getMessage("Bob")).isNull();
-        mockOp.operate();
+        assertThat(mock).isInstanceOf(AnInterface.class);
+        assertThat(mock.calculate(42)).isZero();
+        assertThat(mock.getMessage("Bob")).isNull();
+        mock.operate();
     }
 }

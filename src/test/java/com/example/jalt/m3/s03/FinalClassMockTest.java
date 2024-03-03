@@ -12,9 +12,15 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Create a Mockito mock for a final class
+ * 
+ * Since Java 21 the current Mockito approach leads to a warning:
+ * 
+ * <pre>
+ * A Java agent has been loaded dynamically
+ * </pre>
  */
 class FinalClassMockTest {
-    private FinalClass mockAn = mock();
+    private FinalClass mock = mock();
 
     /**
      * The mock is of the "right" type
@@ -25,7 +31,7 @@ class FinalClassMockTest {
      */
     @Test
     void constructor() {
-        assertThat(mockAn).isInstanceOf(FinalClass.class);
-        assertThat(mockAn.f()).isZero();
+        assertThat(mock).isInstanceOf(FinalClass.class);
+        assertThat(mock.f()).isZero();
     }
 }
