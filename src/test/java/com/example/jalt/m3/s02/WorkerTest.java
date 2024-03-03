@@ -46,6 +46,9 @@ class WorkerTest {
      */
     @Test
     void generateInternalOverflow() {
+        // in this case generate() should throw an exception but it does not
+        // AssertJ detects correctly the failure: "Expecting code to raise a throwable"
+        // But this is misleading, generate() works correctly!
         assertThatExceptionOfType(ArithmeticException.class) //
                 .isThrownBy(() -> worker.generate(2_000_000_000, 2_000_000_000)) //
                 .withMessage("integer overflow");
