@@ -20,16 +20,31 @@ public class Hello {
      */
     public static void main(String[] args) {
         // This message is meant to be seen by developers
-        System.err.println("User input by args: " + Arrays.toString(args));
+        System.err.println("In main() args is " + Arrays.toString(args));
 
-        // These messages are meant to be seen by users
-        if (args.length == 0) {
+        if (args.length == 0 || args[0].isBlank()) {
+            // This message is meant to be seen by users
             System.out.println("Please, pass me your name");
         } else {
-            System.out.println("Hello, " + args[0]);
+            greet(args[0]);
         }
 
         // This message is meant to be seen by developers
-        System.err.println("Done");
+        System.err.println("Done main()");
+    }
+
+    /**
+     * Saying hello
+     * 
+     * @param user name to greet - precondition, a non-empty string is expected
+     */
+    public static void greet(String user) {
+        // This message is meant to be seen by developers
+        System.err.println("In greet() user is " + user);
+        // This message is meant to be seen by users
+        System.out.println("Hello, " + user);
+
+        // This message is meant to be seen by developers
+        System.err.println("Done greet()");
     }
 }

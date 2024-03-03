@@ -24,13 +24,13 @@ public class Hello {
      */
     public static void main(String[] args) {
         // This message is meant to be seen by developers
-        log.info("User input by args: " + Arrays.toString(args));
+        log.info("args is " + Arrays.toString(args));
 
         if (args.length == 0 || args[0].isBlank()) {
-            // These message is meant to be seen by users
+            // This message is meant to be seen by users
             System.out.println("Please, pass me your name");
         } else {
-            System.out.println("Hello, " + args[0]);
+            greet(args[0]);
         }
 
         // This message is meant to be seen by developers
@@ -45,7 +45,10 @@ public class Hello {
     public static void greet(String user) {
         // This message is meant to be seen by developers (not normally!)
         log.finest("User is " + user);
-        // These message is meant to be seen by users
+        // This message is meant to be seen by users
         System.out.println("Hello, " + user);
+
+        // This message is meant to be seen by developers
+        log.info("Done");
     }
 }
