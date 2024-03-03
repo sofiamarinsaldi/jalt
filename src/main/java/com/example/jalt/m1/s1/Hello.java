@@ -13,6 +13,11 @@ import java.util.Arrays;
  * <li>System.err to generate logging
  */
 public class Hello {
+    /**
+     * Show the difference between user output and logging
+     * 
+     * @param args the caller is expected to pass own name as first argument
+     */
     public static void main(String[] args) {
         // This message is meant to be seen by developers
         System.err.println("User input by args: " + Arrays.toString(args));
