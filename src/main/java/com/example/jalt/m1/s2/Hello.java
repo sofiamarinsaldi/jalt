@@ -17,6 +17,11 @@ public class Hello {
     /** A JUL logger - same setting for all Java programs on current JVM! */
     private static final Logger log = Logger.getLogger(Hello.class.getName());
 
+    /**
+     * Show the difference between user output and logging with JUL
+     * 
+     * @param args the caller is expected to pass own name as first argument
+     */
     public static void main(String[] args) {
         // This message is meant to be seen by developers
         log.info("User input by args: " + Arrays.toString(args));
@@ -38,7 +43,7 @@ public class Hello {
      * @param user name to greet - precondition, a non-empty string is expected
      */
     public static void greet(String user) {
-        // This message is meant to be seen by developers (not normally)
+        // This message is meant to be seen by developers (not normally!)
         log.finest("User is " + user);
         // These message is meant to be seen by users
         System.out.println("Hello, " + user);
