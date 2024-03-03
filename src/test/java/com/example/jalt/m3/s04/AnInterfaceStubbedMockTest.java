@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
-import org.mockito.Mockito;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,45 +23,61 @@ import com.example.jalt.m3.s03.AnInterface;
  * <li>when(o.f()).thenThrow(exception)
  * <li>doThrow(exception).when(o).f()
  * 
- * @apiNote Static import of Mockito.when won't compile in Eclipse 2023-09 with
- *          patch for Java 21 - workaround waiting for 2023-12 is _not_ using
- *          static import for this method
+ * @apiNote Java 21: "A Java agent has been loaded dynamically" warning
  */
 class AnInterfaceStubbedMockTest {
-    private AnInterface mockOp = mock();
+    private final AnInterface mock = mock();
 
     /**
-     * Stubbing a primitive to primitive method
+     * Stubbing a method accepting and returning a primitive
      */
     @Test
-    void calculate() {
-        Mockito.when(mockOp.calculate(1)).thenReturn(10);
-        doReturn(20).when(mockOp).calculate(2);
+    void calculateMockResult() {
+        // stubbing by when - then return
+        when(mock.calculate(1)).thenReturn(10);
+        // alternative stubbing by do return - when
+        doReturn(20).when(mock).calculate(2);
 
-        Mockito.when(mockOp.calculate(3)).thenThrow(new IllegalArgumentException("Bad value: 3"));
-        doThrow(new IllegalArgumentException("Bad value: 4")).when(mockOp).calculate(4);
-
-        assertThat(mockOp.calculate(1)).isEqualTo(10);
-        assertThat(mockOp.calculate(2)).isEqualTo(20);
-        assertThatIllegalArgumentException().isThrownBy(() -> mockOp.calculate(3)).withMessage("Bad value: 3");
-        assertThatIllegalArgumentException().isThrownBy(() -> mockOp.calculate(4)).withMessage("Bad value: 4");
+        assertThat(mock.calculate(1)).isEqualTo(10);
+        assertThat(mock.calculate(2)).isEqualTo(20);
     }
 
     /**
-     * Stubbing a reference to reference method
+     * Stubbing a method accepting and returning a primitive for exception
+     */
+    @Test
+    void calculateMockException() {
+        // stubbing by when - then throw
+        when(mock.calculate(3)).thenThrow(new IllegalArgumentException("Bad value: 3"));
+        // alternative stubbing by do throw - when
+        doThrow(new IllegalArgumentException("Bad value: 4")).when(mock).calculate(4);
+
+        assertThatIllegalArgumentException().isThrownBy(() -> mock.calculate(3)).withMessage("Bad value: 3");
+        assertThatIllegalArgumentException().isThrownBy(() -> mock.calculate(4)).withMessage("Bad value: 4");
+    }
+
+    /**
+     * Stubbing a method accepting and returning a reference
+     */
+    @Test
+    void getMessageMockResult() {
+        when(mock.getMessage("Bob")).thenReturn("Hello");
+        doReturn("Ciao").when(mock).getMessage("Tom");
+
+        assertThat(mock.getMessage("Bob")).isEqualTo("Hello");
+        assertThat(mock.getMessage("Tom")).isEqualTo("Ciao");
+    }
+
+    /**
+     * Stubbing a method accepting and returning a reference for exception
      */
     @Test
     void getMessage() {
-        Mockito.when(mockOp.getMessage("Bob")).thenReturn("Hello");
-        doReturn("Ciao").when(mockOp).getMessage("Tom");
+        when(mock.getMessage("Kim")).thenThrow(new IllegalArgumentException("KO 1"));
+        doThrow(new IllegalArgumentException("KO 2")).when(mock).getMessage("Jim");
 
-        Mockito.when(mockOp.getMessage("Kim")).thenThrow(new IllegalArgumentException("KO 1"));
-        doThrow(new IllegalArgumentException("KO 2")).when(mockOp).getMessage("Jim");
-
-        assertThat(mockOp.getMessage("Bob")).isEqualTo("Hello");
-        assertThat(mockOp.getMessage("Tom")).isEqualTo("Ciao");
-        assertThatIllegalArgumentException().isThrownBy(() -> mockOp.getMessage("Kim")).withMessage("KO 1");
-        assertThatIllegalArgumentException().isThrownBy(() -> mockOp.getMessage("Jim")).withMessage("KO 2");
+        assertThatIllegalArgumentException().isThrownBy(() -> mock.getMessage("Kim")).withMessage("KO 1");
+        assertThatIllegalArgumentException().isThrownBy(() -> mock.getMessage("Jim")).withMessage("KO 2");
     }
 
     /**
@@ -69,10 +85,10 @@ class AnInterfaceStubbedMockTest {
      */
     @Test
     void operateExceptional() {
-        // won't compile
-        // Mockito.when(mockOp.operate()).thenThrow(new IllegalArgumentException("KO"));
-        doThrow(new IllegalArgumentException("KO")).when(mockOp).operate();
+        // if the method returns void, the when - then throw approach won't compile
+        // when(mock.operate()).thenThrow(new IllegalArgumentException("KO"));
+        doThrow(new IllegalArgumentException("KO")).when(mock).operate();
 
-        assertThatIllegalArgumentException().isThrownBy(() -> mockOp.operate()).withMessage("KO");
+        assertThatIllegalArgumentException().isThrownBy(() -> mock.operate()).withMessage("KO");
     }
 }
