@@ -20,48 +20,61 @@ class SimpleTest {
     private Simple simple = new Simple();
 
     /**
-     * Assert that a condition is true (in a very compact way)
+     * Use of Assertions.assertTrue()
      */
     @Test
-    void isPositiveTrue() {
-        assertTrue(simple.isPositive(12));
+    void isPositiveWhenPositiveThenTrue() {
+        int input = 12;
+        boolean actual = simple.isPositive(input);
+
+        // compact way of saying that actual is expected to be true
+        assertTrue(actual);
     }
 
     /**
-     * Assert that a condition is false
+     * Use of Assertions.assertFalse()
      */
     @Test
-    void isPositiveFalse() {
-        boolean condition = simple.isPositive(-42);
-        assertFalse(condition);
+    void isPositiveWhenNegativeThenFalse() {
+        int input = -42;
+        boolean actual = simple.isPositive(input);
+
+        // compact way of saying that actual is expected to be false
+        assertFalse(actual);
     }
 
     /**
-     * Assert that a reference is null
+     * Use of Assertions.assertNull()
      */
     @Test
-    void nullIfPositiveNull() {
-        String reference = simple.nullIfPositive(42);
-        assertNull(reference);
+    void nullIfPositiveWhenPositiveThenNull() {
+        int input = 42;
+        String actual = simple.nullIfPositive(input);
+
+        // compact way of saying that actual is expected to be null
+        assertNull(actual);
     }
 
     /**
-     * Assert that a reference is not null
+     * Use of Assertions.assertNotNull()
      */
     @Test
-    void nullIfPositiveNotNull() {
-        String reference = simple.nullIfPositive(-22);
-        assertNotNull(reference);
+    void nullIfPositiveWhenNegativeThenNotNull() {
+        int input = -42;
+        String actual = simple.nullIfPositive(input);
+
+        // compact way of saying that actual is expected not to be null
+        assertNotNull(actual);
     }
 
     /**
-     * Assert that two primitive values (integers) are equal
+     * Use of Assertions.assertEquals()
      */
     @Test
-    void negateEquals() {
+    void negateWhenPositiveThenEqualsToNegated() {
         int input = 42;
         int actual = simple.negate(input);
-        int expected = -42;
+        int expected = -input;
 
         assertEquals(expected, actual);
     }
@@ -70,10 +83,11 @@ class SimpleTest {
      * Assert that two primitive values (integers) are different
      */
     @Test
-    void negateNotEquals() {
+    void negateWhenPositiveThenNotEqualsToSelf() {
         int input = 42;
         int actual = simple.negate(input);
 
+        // input is not expected to be equals to actual
         assertNotEquals(input, actual);
     }
 
@@ -83,7 +97,7 @@ class SimpleTest {
      * With a lower delta the assertion should fail
      */
     @Test
-    void multiplyEqualsForFloatingPoints() {
+    void multiply_WhenCloseEnough_ThenEqualsWithDelta() {
         double first = .29;
         double second = 3.0;
         double actual = simple.multiply(first, second);
@@ -97,7 +111,7 @@ class SimpleTest {
      * With a higher delta the assertion should fail
      */
     @Test
-    void multiplyNotEqualsForFloatingPoints() {
+    void multiply_WhenDistantEnough_ThenNotEqualsWithDelta() {
         double first = .29;
         double second = 3.0;
         double actual = simple.multiply(first, second);
