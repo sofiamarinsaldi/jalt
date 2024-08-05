@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m2.s12;
+package com.example.jalt.m3.s4;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.jalt.m2.s10.Simple;
+import com.example.jalt.m3.s2.Simple;
 
 /**
  * Testing an exception-throwing method in the modern way - Jupiter + AssertJ
@@ -46,7 +46,8 @@ class SimpleTest {
     /**
      * Can't negate minimum integer value
      * 
-     * AssertJ assertThatIllegalArgumentException() variation for assertThatExceptionOfType
+     * AssertJ assertThatIllegalArgumentException() variation for
+     * assertThatExceptionOfType
      */
     @Test
     void negateMinIntIllegalArgumentException() {
