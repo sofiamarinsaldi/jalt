@@ -36,8 +36,7 @@ class SimpleTest {
      * Negate max integer value
      */
     @Test
-    void negateMaxValue() {
-
+    void negateWhenMaxValueThenSucceed() {
         int value = Integer.MAX_VALUE;
         int expected = -Integer.MAX_VALUE;
 
@@ -50,7 +49,7 @@ class SimpleTest {
      */
     @Test
     @Disabled
-    void negateExceptionUncaught() {
+    void negateWhenMinValueThenCrash() {
         int actual = simple.negate(Integer.MIN_VALUE);
         assertThat(actual).isEqualTo(Integer.MIN_VALUE);
     }
@@ -59,7 +58,7 @@ class SimpleTest {
      * Can't negate minimum integer value - legacy test
      */
     @Test
-    void negateException() {
+    void negateWhenMinValueThenCatchException() {
         try {
             int actual = simple.negate(Integer.MIN_VALUE);
             fail("An IllegalArgumentException was expected, instead I've got " + actual);
@@ -73,7 +72,7 @@ class SimpleTest {
      * Can't negate minimum integer value - alternative legacy test
      */
     @Test
-    void negateExceptionAlternative() {
+    void negateWhenMinValueThenExceptionAlternative() {
         try {
             simple.negate(Integer.MIN_VALUE);
         } catch (IllegalArgumentException ex) {
