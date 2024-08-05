@@ -16,10 +16,14 @@ import org.junit.jupiter.api.Test;
  */
 class SimpleTest {
     /**
-     * The test is named as the tested method, plus a hint on its raison d'être.
+     * Test named from the tested method, plus info following BDD
+     * <ul>
+     * <li>Given: nothing special, Simple is created
+     * <li>When: a positive value is passed
+     * <li>Then: the negate value passed in is expected
      */
     @Test
-    public void negatePositive() {
+    public void negateWhenPositiveThenNegative() {
         Simple simple = new Simple();
         int input = 42;
 
