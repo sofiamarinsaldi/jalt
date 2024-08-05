@@ -3,14 +3,14 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m2.s09;
+package com.example.jalt.m2.s9;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.withPrecision;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.jalt.m2.s06.Simple;
+import com.example.jalt.m2.s6.Simple;
 
 /**
  * AssertJ assertions

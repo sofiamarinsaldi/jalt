@@ -3,14 +3,14 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m2.s08;
+package com.example.jalt.m2.s8;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import com.example.jalt.m2.s06.Simple;
+import com.example.jalt.m2.s6.Simple;
 
 /**
  * Jupiter parameterized tests

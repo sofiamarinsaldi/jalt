@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m2.s04;
+package com.example.jalt.m2.s4;
 
 /**
  * A stub for a class that has to be developed

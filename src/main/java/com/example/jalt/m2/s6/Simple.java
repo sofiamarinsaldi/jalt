@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m2.s06;
+package com.example.jalt.m2.s6;
 
 /**
  * A simple class providing methods to experiment with Jupiter assertions

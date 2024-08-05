@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jalt
  */
-package com.example.jalt.m2.s04;
+package com.example.jalt.m2.s4;
 
 import static org.junit.jupiter.api.Assertions.*;
 
