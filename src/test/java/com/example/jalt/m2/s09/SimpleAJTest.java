@@ -26,7 +26,7 @@ class SimpleAJTest {
      * Assert that the actual value is true
      */
     @Test
-    void isPositiveTrue() {
+    void isPositiveWhenPositiveThenTrue() {
         boolean actual = simple.isPositive(42);
         assertThat(actual).isTrue();
     }
@@ -35,8 +35,9 @@ class SimpleAJTest {
      * Assert that the actual value is true (more verbose)
      */
     @Test
-    void isPositiveEqualTrue() {
-        boolean actual = simple.isPositive(42);
+    void isPositiveWhenPositiveThenTrueVerbose() {
+        int input = 42;
+        boolean actual = simple.isPositive(input);
         assertThat(actual).isEqualTo(true);
     }
 
@@ -44,7 +45,7 @@ class SimpleAJTest {
      * Assert that the actual value is false
      */
     @Test
-    void isPositiveFalse() {
+    void isPositiveWhenNegativeThenFalse() {
         boolean actual = simple.isPositive(-2);
         assertThat(actual).isFalse();
     }
@@ -53,7 +54,7 @@ class SimpleAJTest {
      * Assert that the actual reference is null
      */
     @Test
-    void nullIfPositive() {
+    void nullIfWhenPositiveThenNull() {
         String actual = simple.nullIfPositive(12);
         assertThat(actual).isNull();
     }
@@ -62,8 +63,9 @@ class SimpleAJTest {
      * Assert that the actual reference is null (more verbose)
      */
     @Test
-    void nullIfPositiveEqual() {
-        String actual = simple.nullIfPositive(42);
+    void nullIfWhenPositiveThenNullVerbose() {
+        int input = 42;
+        String actual = simple.nullIfPositive(input);
         assertThat(actual).isEqualTo(null);
     }
 
@@ -71,7 +73,7 @@ class SimpleAJTest {
      * Assert that the actual reference is null
      */
     @Test
-    void nullIfPositiveNot() {
+    void nullIfPositiveWhenNegativeThenNotNull() {
         String actual = simple.nullIfPositive(-12);
         assertThat(actual).isNotNull();
     }
@@ -80,9 +82,10 @@ class SimpleAJTest {
      * Assert that the actual int value is equal to the expected int value
      */
     @Test
-    void negatePositive() {
-        int actual = simple.negate(12);
-        int expected = -12;
+    void negateWhenPositiveThenEqualToNegate() {
+        int input = 12;
+        int actual = simple.negate(input);
+        int expected = -input;
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -93,7 +96,7 @@ class SimpleAJTest {
      * With a lower precision the assertion should fail
      */
     @Test
-    void multiplyClose() {
+    void multiplyWhenCloseWithPrecisionThenPass() {
         double actual = simple.multiply(0.29, 3.0);
         double expected = .87;
         assertThat(actual).isCloseTo(expected, withPrecision(.000_000_000_000_000_2));
@@ -103,7 +106,7 @@ class SimpleAJTest {
      * Assert that actual starts with prefix
      */
     @Test
-    void startsWith() {
+    void whenStartsWithThenPass() {
         String prefix = "Tom";
         String actual = "Tom Jones";
         assertThat(actual).startsWith(prefix);
@@ -113,7 +116,7 @@ class SimpleAJTest {
      * Assert that actual does not start with prefix
      */
     @Test
-    void doesNotStartWith() {
+    void whenDoesNotStartWithThenPass() {
         String prefix = "Ton";
         String actual = "Tom Jones";
         assertThat(actual).doesNotStartWith(prefix);
