@@ -23,7 +23,7 @@ class SimpleTest {
      * Can't negate minimum integer value
      */
     @Test
-    void negateMinInt() {
+    void negateWhenMinIntThenException() {
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
                 () -> simple.negate(Integer.MIN_VALUE));
         assertEquals("Can't negate MIN_VALUE", ex.getMessage());

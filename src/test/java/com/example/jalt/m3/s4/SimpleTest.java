@@ -25,7 +25,7 @@ class SimpleTest {
      * AssertJ assertThatThrownBy() + isInstanceOf() + hasMessage()
      */
     @Test
-    void negateMinIntThrownBy() {
+    void negateWhenMinValueThenThrownBy() {
         assertThatThrownBy(() -> simple.negate(Integer.MIN_VALUE)) //
                 .isInstanceOf(IllegalArgumentException.class) //
                 .hasMessage("Can't negate MIN_VALUE");
@@ -37,7 +37,7 @@ class SimpleTest {
      * AssertJ assertThatExceptionOfType() + isThrownBy() + withMessage()
      */
     @Test
-    void negateMinIntException() {
+    void negateWhenMinValueThenException() {
         assertThatExceptionOfType(IllegalArgumentException.class) //
                 .isThrownBy(() -> simple.negate(Integer.MIN_VALUE)) //
                 .withMessage("Can't negate MIN_VALUE");
@@ -50,7 +50,7 @@ class SimpleTest {
      * assertThatExceptionOfType
      */
     @Test
-    void negateMinIntIllegalArgumentException() {
+    void negateWhenMinValueThenIllegalArgumentException() {
         assertThatIllegalArgumentException() //
                 .isThrownBy(() -> simple.negate(Integer.MIN_VALUE)) //
                 .withMessage("Can't negate MIN_VALUE");
