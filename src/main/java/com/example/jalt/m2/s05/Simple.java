@@ -13,7 +13,7 @@ package com.example.jalt.m2.s05;
 public class Simple {
     /**
      * Negate the input value.
-     * 
+     * <p>
      * For instance, if the caller pass 42, then -42 should be returned.
      * 
      * @param value the input
