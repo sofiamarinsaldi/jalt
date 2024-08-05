@@ -18,7 +18,7 @@ class SimpleTest {
     /**
      * A test stub. Notice the Test annotation, without it, it is not a JUnit test.
      *
-     * The call to Assertions::fail() causes a red light.
+     * The call to Assertions.fail() causes a red light.
      */
     @Test
     void testNegate() {
