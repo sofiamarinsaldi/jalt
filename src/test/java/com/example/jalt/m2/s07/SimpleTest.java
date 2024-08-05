@@ -47,30 +47,23 @@ class SimpleTest {
         System.out.println("Finalizing the test case execution");
     }
 
-    /**
-     * Test for positive input
-     */
     @Test
-    public void negatePositive() {
+    public void negateWhenPositiveThenNegative() {
         int input = 42;
 
-        int expected = -42;
+        int expected = -input;
         int actual = simple.negate(input);
 
         assertEquals(expected, actual);
     }
 
-    /**
-     * Test for negative input
-     */
     @Test
-    public void negateNegative() {
+    public void negateWhenNegativeThenPositive() {
         int input = -42;
 
-        int expected = 42;
+        int expected = -input;
         int actual = simple.negate(input);
 
         assertEquals(expected, actual);
     }
-
 }
