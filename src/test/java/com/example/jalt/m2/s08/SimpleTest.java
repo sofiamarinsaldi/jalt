@@ -46,7 +46,7 @@ class SimpleTest {
             -42,  42
               0,   0
             """)
-    void checkEqual(int input, int expected) {
+    void negate(int input, int expected) {
         int actual = simple.negate(input);
         assertEquals(expected, actual);
     }
@@ -75,7 +75,7 @@ class SimpleTest {
             0.29, 3.0, 0.87, 0.000_000_000_000_000_2
             2   , 3  , 6   , 0
             """)
-    void checkEqualDouble(double first, double second, double expected, double delta) {
+    void multiply(double first, double second, double expected, double delta) {
         double actual = simple.multiply(first, second);
         assertEquals(expected, actual, delta);
     }
