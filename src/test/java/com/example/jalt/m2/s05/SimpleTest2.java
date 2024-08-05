@@ -21,11 +21,8 @@ class SimpleTest2 {
      */
     private Simple simple = new Simple();
 
-    /**
-     * Test for positive input
-     */
     @Test
-    public void negatePositive() {
+    public void negateWhenPositiveThenNegative() {
         int input = 42;
 
         int expected = -42;
@@ -34,11 +31,8 @@ class SimpleTest2 {
         assertEquals(expected, actual);
     }
 
-    /**
-     * Test for negative input
-     */
     @Test
-    public void negateNegative() {
+    public void negateWhenNegativeThenPositive() {
         int input = -42;
 
         int expected = 42;
